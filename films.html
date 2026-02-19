@@ -12,55 +12,65 @@
     :root { --bg: #fafaf8; --text: #1a1a1a; --text-dim: #888; --hover: #e63946; --border: rgba(0,0,0,0.06); }
     body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
 
-    .back { position: fixed; top: 2rem; left: 2rem; z-index: 10; }
+    .back { margin-bottom: 0.5rem; }
     .back a { color: var(--text-dim); text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; }
     .back a:hover { color: var(--hover); }
 
-    .container { max-width: 1000px; margin: 0 auto; padding: 6rem 2rem 4rem; }
+    /* ── Layout: sidebar + main ── */
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
 
-    .page-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 300;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100vh;
+      padding: 6rem 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
       opacity: 0;
       animation: fadeIn 0.8s ease 0.1s forwards;
     }
 
-    /* ── Category filters ── */
-    .filters {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-      opacity: 0;
-      animation: fadeIn 0.8s ease 0.3s forwards;
+    .sidebar .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
     }
 
-    .filters button {
+    .sidebar button {
       background: none;
-      border: 1px solid var(--border);
+      border: none;
       color: var(--text-dim);
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: 400;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 0.45rem 1rem;
+      padding: 0.4rem 0;
       cursor: pointer;
-      transition: all 0.3s ease;
+      text-align: left;
+      transition: color 0.3s ease;
     }
 
-    .filters button:hover {
+    .sidebar button:hover {
       color: var(--text);
-      border-color: var(--text);
     }
 
-    .filters button.active {
-      color: #fff;
-      background: var(--text);
-      border-color: var(--text);
+    .sidebar button.active {
+      color: var(--hover);
+    }
+
+    .main {
+      margin-left: 200px;
+      flex: 1;
+      padding: 4rem 2.5rem 4rem;
     }
 
     /* ── Image grid ── */
@@ -73,7 +83,7 @@
     .card {
       position: relative;
       overflow: hidden;
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 1 / 1;
       background: #eee;
       cursor: pointer;
       opacity: 0;
@@ -172,30 +182,51 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
       .grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 700px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 5rem 1.5rem 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0 1rem;
+      }
+      .sidebar .page-title {
+        width: 100%;
+        margin-bottom: 0.8rem;
+      }
+      .main {
+        margin-left: 0;
+        padding: 1.5rem 1.5rem 3rem;
+      }
+      .layout { flex-direction: column; }
       .back { top: 1.2rem; left: 1.2rem; }
-      .container { padding: 5rem 1rem 3rem; }
+    }
+
+    @media (max-width: 500px) {
       .grid { grid-template-columns: 1fr; gap: 0.8rem; }
       .card .overlay { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <div class="back"><a href="index.html">&larr; back</a></div>
-  <div class="container">
-    <h1 class="page-title">Films</h1>
-
-    <div class="filters">
+  <div class="layout">
+    <div class="sidebar">
+      <div class="back"><a href="index.html">&larr; back</a></div>
+      <h1 class="page-title">Films</h1>
       <button class="active" data-filter="all">All</button>
       <button data-filter="animation">Animation</button>
       <button data-filter="video-art">Video Art</button>
       <button data-filter="documentary">Documentary</button>
     </div>
 
+    <div class="main">
     <div class="grid">
 
       <!-- ── Animation ── -->
@@ -312,6 +343,7 @@
         </div>
       </a>
 
+    </div>
     </div>
   </div>
 
