@@ -230,7 +230,7 @@
     <div class="grid">
 
       <!-- ── Animation ── -->
-      <div class="section-label" data-section="animation">Animation</div>
+      <div class="section-label hidden" data-section="animation">Animation</div>
 
       <a class="card" data-cat="animation" href="https://www.mashavlasova.com/untidal" target="_blank" rel="noopener">
         <img src="https://images.squarespace-cdn.com/content/v1/6102df1fc04c9713585a42be/ea0ddcff-46a8-466a-9eab-547c8145801b/Un-Tidal+Poster3_8.jpg?format=750w" alt="Un-Tidal film still" loading="lazy">
@@ -269,7 +269,7 @@
       </a>
 
       <!-- ── Video Art ── -->
-      <div class="section-label" data-section="video-art">Video Art</div>
+      <div class="section-label hidden" data-section="video-art">Video Art</div>
 
       <a class="card" data-cat="video-art" href="https://www.mashavlasova.com/her-type" target="_blank" rel="noopener">
         <img src="https://images.squarespace-cdn.com/content/v1/6102df1fc04c9713585a42be/83800381-020e-4c3a-b8c1-915c805d7356/hertype+poster2022.jpg?format=750w" alt="Her Type film still" loading="lazy">
@@ -323,7 +323,7 @@
       </a>
 
       <!-- ── Documentary ── -->
-      <div class="section-label" data-section="documentary">Documentary</div>
+      <div class="section-label hidden" data-section="documentary">Documentary</div>
 
       <a class="card" data-cat="documentary" href="https://www.mashavlasova.com/waterland" target="_blank" rel="noopener">
         <img src="https://images.squarespace-cdn.com/content/v1/6102df1fc04c9713585a42be/1663871613148-C7Z0L9Z9ZZM1GZ44JGKH/LM_1.jpg?format=750w" alt="Waterlands film still" loading="lazy">
@@ -374,7 +374,7 @@
 
         labels.forEach(label => {
           if (filter === 'all') {
-            label.classList.remove('hidden');
+            label.classList.add('hidden');
           } else if (label.dataset.section === filter) {
             label.classList.remove('hidden');
           } else {
