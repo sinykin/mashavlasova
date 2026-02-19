@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Masha Vlasova — Films</title>
-  <meta name="description" content="Films by Masha Vlasova: experimental animation and non-fiction filmmaking.">
+  <meta name="description" content="Films by Masha Vlasova: experimental animation, video art, and documentary.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
@@ -16,49 +16,155 @@
     .back a { color: var(--text-dim); text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; }
     .back a:hover { color: var(--hover); }
 
-    .container { max-width: 640px; margin: 0 auto; padding: 6rem 2rem 4rem; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 6rem 2rem 4rem; }
 
     .page-title {
       font-family: 'Space Grotesk', sans-serif;
       font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 300;
       letter-spacing: -0.02em;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.5rem;
       opacity: 0;
       animation: fadeIn 0.8s ease 0.1s forwards;
     }
 
-    .film-list { list-style: none; }
+    /* ── Category filters ── */
+    .filters {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeIn 0.8s ease 0.3s forwards;
+    }
 
-    .film-item {
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--border);
+    .filters button {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.45rem 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filters button:hover {
+      color: var(--text);
+      border-color: var(--text);
+    }
+
+    .filters button.active {
+      color: #fff;
+      background: var(--text);
+      border-color: var(--text);
+    }
+
+    /* ── Image grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: #eee;
+      cursor: pointer;
       opacity: 0;
       animation: fadeIn 0.6s ease forwards;
     }
 
-    .film-item:last-child { border-bottom: none; }
+    .card.hidden {
+      display: none;
+    }
 
-    .film-title {
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.15) 50%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.2rem;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .card:hover .overlay {
+      opacity: 1;
+    }
+
+    .card .overlay .title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 400;
-      letter-spacing: -0.01em;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.3;
     }
 
-    .film-title a {
-      color: var(--text);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .film-title a:hover { color: var(--hover); }
-
-    .film-meta {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-      margin-top: 0.25rem;
+    .card .overlay .meta {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.65);
+      margin-top: 0.3rem;
       font-weight: 300;
+    }
+
+    .card .overlay .tag {
+      position: absolute;
+      top: 1rem;
+      left: 1.2rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(4px);
+      padding: 0.2rem 0.55rem;
+      border-radius: 2px;
+    }
+
+    /* ── Section dividers ── */
+    .section-label {
+      grid-column: 1 / -1;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--hover);
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-top: 1rem;
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .section-label:first-child {
+      margin-top: 0;
+    }
+
+    .section-label.hidden {
+      display: none;
     }
 
     @keyframes fadeIn {
@@ -66,9 +172,15 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    }
+
+    @media (max-width: 500px) {
       .back { top: 1.2rem; left: 1.2rem; }
-      .container { padding: 5rem 1.5rem 3rem; }
+      .container { padding: 5rem 1rem 3rem; }
+      .grid { grid-template-columns: 1fr; gap: 0.8rem; }
+      .card .overlay { opacity: 1; }
     }
   </style>
 </head>
@@ -76,57 +188,168 @@
   <div class="back"><a href="index.html">&larr; back</a></div>
   <div class="container">
     <h1 class="page-title">Films</h1>
-    <ul class="film-list">
-      <li class="film-item">
-        <div class="film-title"><a href="https://www.mashavlasova.com/untidal" target="_blank" rel="noopener">Un-Tidal</a></div>
-        <div class="film-meta">Best Celluloid Film &amp; Original Concept, EFEA 2022</div>
-      </li>
-      <li class="film-item">
-        <div class="film-title"><a href="https://www.mashavlasova.com/her-type" target="_blank" rel="noopener">Her Type</a></div>
-        <div class="film-meta">Audience Choice Award, Burnt Video Art Festival 2021</div>
-      </li>
-      <li class="film-item">
-        <div class="film-title"><a href="https://www.mashavlasova.com/solarstorm" target="_blank" rel="noopener">Solar Storm</a></div>
-        <div class="film-meta">Nominated Best Experimental, We Make Movies 2024</div>
-      </li>
-      <li class="film-item">
-        <div class="film-title"><a href="https://www.mashavlasova.com/waterland" target="_blank" rel="noopener">Waterlands</a></div>
-        <div class="film-meta">ASAP 14, Seattle 2023</div>
-      </li>
-      <li class="film-item">
-        <div class="film-title"><a href="https://www.mashavlasova.com/flare" target="_blank" rel="noopener">Flare</a></div>
-        <div class="film-meta">World Premiere, Wrong Biennale</div>
-      </li>
-      <li class="film-item">
-        <div class="film-title"><a href="https://www.mashavlasova.com/midsummer" target="_blank" rel="noopener">Midsummer</a></div>
-        <div class="film-meta">Honorable Mention, Thomas Edison Film Festival 2024</div>
-      </li>
-      <li class="film-item">
-        <div class="film-title"><a href="https://www.mashavlasova.com/as-an-earlier-wreck-is-now-cleared" target="_blank" rel="noopener">as an earlier wreck is now cleared</a></div>
-      </li>
-      <li class="film-item">
-        <div class="film-title"><a href="https://www.mashavlasova.com/chekhovs-mashas-masha" target="_blank" rel="noopener">Chekhov's Masha's Masha</a></div>
-      </li>
-      <li class="film-item">
-        <div class="film-title"><a href="https://www.mashavlasova.com/the-imaginary-kaleidoscope" target="_blank" rel="noopener">The Imaginary Kaleidoscope</a></div>
-        <div class="film-meta">ICDOCS, Ann Arbor, Bideodromo, and more</div>
-      </li>
-      <li class="film-item">
-        <div class="film-title"><a href="https://www.mashavlasova.com/it-razes-that-visual-itch-like" target="_blank" rel="noopener">it razes that visual itch like</a></div>
-      </li>
-      <li class="film-item">
-        <div class="film-title"><a href="https://www.mashavlasova.com/frame-work" target="_blank" rel="noopener">Frame Work</a></div>
-        <div class="film-meta">with Astri Snodgrass</div>
-      </li>
-      <li class="film-item">
-        <div class="film-title"><a href="https://www.mashavlasova.com/monuments-and-other-thing-that-change" target="_blank" rel="noopener">Monuments and Other Things That Change</a></div>
-        <div class="film-meta">Carpenter Center, Harvard 2018</div>
-      </li>
-    </ul>
+
+    <div class="filters">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="animation">Animation</button>
+      <button data-filter="video-art">Video Art</button>
+      <button data-filter="documentary">Documentary</button>
+    </div>
+
+    <div class="grid">
+
+      <!-- ── Animation ── -->
+      <div class="section-label" data-section="animation">Animation</div>
+
+      <a class="card" data-cat="animation" href="https://www.mashavlasova.com/untidal" target="_blank" rel="noopener">
+        <img src="https://images.squarespace-cdn.com/content/v1/6102df1fc04c9713585a42be/ea0ddcff-46a8-466a-9eab-547c8145801b/Un-Tidal+Poster3_8.jpg?format=750w" alt="Un-Tidal film still" loading="lazy">
+        <div class="overlay">
+          <span class="tag">animation</span>
+          <span class="title">Un-Tidal</span>
+          <span class="meta">Best Celluloid Film &amp; Original Concept, EFEA 2022</span>
+        </div>
+      </a>
+
+      <a class="card" data-cat="animation" href="https://www.mashavlasova.com/solarstorm" target="_blank" rel="noopener">
+        <img src="https://images.squarespace-cdn.com/content/v1/6102df1fc04c9713585a42be/5e948597-d14d-4364-9029-a357529342b5/SS_still?format=750w" alt="Solar Storm film still" loading="lazy">
+        <div class="overlay">
+          <span class="tag">animation</span>
+          <span class="title">Solar Storm</span>
+          <span class="meta">Nominated Best Experimental, We Make Movies 2024</span>
+        </div>
+      </a>
+
+      <a class="card" data-cat="animation" href="https://www.mashavlasova.com/midsummer" target="_blank" rel="noopener">
+        <img src="https://images.squarespace-cdn.com/content/v1/6102df1fc04c9713585a42be/0abe964b-d702-4faf-b657-ad81bae2e887/Sequence+01.00_01_03_15.Still005.jpg?format=750w" alt="Midsummer film still" loading="lazy">
+        <div class="overlay">
+          <span class="tag">animation</span>
+          <span class="title">Midsummer</span>
+          <span class="meta">Honorable Mention, Thomas Edison Film Festival 2024</span>
+        </div>
+      </a>
+
+      <!-- ── Video Art ── -->
+      <div class="section-label" data-section="video-art">Video Art</div>
+
+      <a class="card" data-cat="video-art" href="https://www.mashavlasova.com/her-type" target="_blank" rel="noopener">
+        <img src="https://images.squarespace-cdn.com/content/v1/6102df1fc04c9713585a42be/83800381-020e-4c3a-b8c1-915c805d7356/hertype+poster2022.jpg?format=750w" alt="Her Type film still" loading="lazy">
+        <div class="overlay">
+          <span class="tag">video art</span>
+          <span class="title">Her Type</span>
+          <span class="meta">Audience Choice Award, Burnt Video Art Festival 2021</span>
+        </div>
+      </a>
+
+      <a class="card" data-cat="video-art" href="https://www.mashavlasova.com/flare" target="_blank" rel="noopener">
+        <img src="https://images.squarespace-cdn.com/content/v1/6102df1fc04c9713585a42be/1689267907885-8L1XHTB0T1OZYMA6LDCW/UHD+pro+res.00_00_13_05.Still001.jpg?format=750w" alt="Flare film still" loading="lazy">
+        <div class="overlay">
+          <span class="tag">video art</span>
+          <span class="title">Flare</span>
+          <span class="meta">World Premiere, Wrong Biennale</span>
+        </div>
+      </a>
+
+      <a class="card" data-cat="video-art" href="https://www.mashavlasova.com/as-an-earlier-wreck-is-now-cleared" target="_blank" rel="noopener">
+        <img src="https://images.squarespace-cdn.com/content/v1/6102df1fc04c9713585a42be/51ef61ca-e92a-4aab-af04-581c86c683ba/aaewinc_still1+copy.jpg?format=750w" alt="as an earlier wreck is now cleared film still" loading="lazy">
+        <div class="overlay">
+          <span class="tag">video art</span>
+          <span class="title">as an earlier wreck is now cleared</span>
+        </div>
+      </a>
+
+      <a class="card" data-cat="video-art" href="https://www.mashavlasova.com/chekhovs-mashas-masha" target="_blank" rel="noopener">
+        <img src="https://images.squarespace-cdn.com/content/v1/6102df1fc04c9713585a42be/1627581879666-MSNIKIWSQK6H1Z0RRUEW/Chekhov%27s+Masha%27s+Masha2.png?format=750w" alt="Chekhov's Masha's Masha film still" loading="lazy">
+        <div class="overlay">
+          <span class="tag">video art</span>
+          <span class="title">Chekhov's Masha's Masha</span>
+        </div>
+      </a>
+
+      <a class="card" data-cat="video-art" href="https://www.mashavlasova.com/the-imaginary-kaleidoscope" target="_blank" rel="noopener">
+        <img src="https://images.squarespace-cdn.com/content/v1/6102df1fc04c9713585a42be/1628105108627-95TWXFU5NR0GCSDEF2LB/IM3.png?format=750w" alt="The Imaginary Kaleidoscope film still" loading="lazy">
+        <div class="overlay">
+          <span class="tag">video art</span>
+          <span class="title">The Imaginary Kaleidoscope</span>
+          <span class="meta">ICDOCS, Ann Arbor, Bideodromo, and more</span>
+        </div>
+      </a>
+
+      <a class="card" data-cat="video-art" href="https://www.mashavlasova.com/it-razes-that-visual-itch-like" target="_blank" rel="noopener">
+        <img src="https://images.squarespace-cdn.com/content/v1/6102df1fc04c9713585a42be/3d8ca3b1-5f50-4ff6-a9fe-642d5705920e/It+razes+that+visual+itch+like.jpg?format=750w" alt="it razes that visual itch like film still" loading="lazy">
+        <div class="overlay">
+          <span class="tag">video art</span>
+          <span class="title">it razes that visual itch like</span>
+        </div>
+      </a>
+
+      <a class="card" data-cat="video-art" href="https://www.mashavlasova.com/frame-work" target="_blank" rel="noopener">
+        <img src="https://images.squarespace-cdn.com/content/v1/6102df1fc04c9713585a42be/1627579058899-7FV9DAMQGE9ZHFY6E6IU/framework_still1.png?format=750w" alt="Frame Work film still" loading="lazy">
+        <div class="overlay">
+          <span class="tag">video art</span>
+          <span class="title">Frame Work</span>
+          <span class="meta">with Astri Snodgrass</span>
+        </div>
+      </a>
+
+      <!-- ── Documentary ── -->
+      <div class="section-label" data-section="documentary">Documentary</div>
+
+      <a class="card" data-cat="documentary" href="https://www.mashavlasova.com/waterland" target="_blank" rel="noopener">
+        <img src="https://images.squarespace-cdn.com/content/v1/6102df1fc04c9713585a42be/1663871613148-C7Z0L9Z9ZZM1GZ44JGKH/LM_1.jpg?format=750w" alt="Waterlands film still" loading="lazy">
+        <div class="overlay">
+          <span class="tag">documentary</span>
+          <span class="title">Waterlands</span>
+          <span class="meta">ASAP 14, Seattle 2023</span>
+        </div>
+      </a>
+
+      <a class="card" data-cat="documentary" href="https://www.mashavlasova.com/monuments-and-other-thing-that-change" target="_blank" rel="noopener">
+        <img src="https://images.squarespace-cdn.com/content/v1/6102df1fc04c9713585a42be/1628544441113-K9E8ZG4WS7IRXU4JS1DN/thepicture.png?format=750w" alt="Monuments and Other Things That Change film still" loading="lazy">
+        <div class="overlay">
+          <span class="tag">documentary</span>
+          <span class="title">Monuments and Other Things That Change</span>
+          <span class="meta">Carpenter Center, Harvard 2018</span>
+        </div>
+      </a>
+
+    </div>
   </div>
+
   <script>
-    document.querySelectorAll('.film-item').forEach((el, i) => {
-      el.style.animationDelay = (0.2 + i * 0.06) + 's';
+    /* ── Staggered fade-in ── */
+    document.querySelectorAll('.card, .section-label').forEach((el, i) => {
+      el.style.animationDelay = (0.3 + i * 0.06) + 's';
+    });
+
+    /* ── Category filtering ── */
+    const buttons = document.querySelectorAll('.filters button');
+    const cards = document.querySelectorAll('.card');
+    const labels = document.querySelectorAll('.section-label');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.cat === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+
+        labels.forEach(label => {
+          if (filter === 'all') {
+            label.classList.remove('hidden');
+          } else if (label.dataset.section === filter) {
+            label.classList.remove('hidden');
+          } else {
+            label.classList.add('hidden');
+          }
+        });
+      });
     });
   </script>
 </body>
