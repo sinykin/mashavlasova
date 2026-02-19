@@ -165,11 +165,23 @@
   </div>
   <script>
     const el = document.getElementById('name');
-    'Masha Vlasova'.split('').forEach((c, i) => {
-      const s = document.createElement('span');
-      s.style.setProperty('--i', i);
-      s.textContent = c === ' ' ? '\u00A0' : c;
-      el.appendChild(s);
+    let i = 0;
+    'Masha Vlasova'.split(' ').forEach((word, wi) => {
+      if (wi > 0) {
+        const sp = document.createElement('span');
+        sp.innerHTML = '&nbsp;';
+        sp.style.setProperty('--i', i++);
+        el.appendChild(sp);
+      }
+      const wrap = document.createElement('span');
+      wrap.style.whiteSpace = 'nowrap';
+      word.split('').forEach(c => {
+        const s = document.createElement('span');
+        s.style.setProperty('--i', i++);
+        s.textContent = c;
+        wrap.appendChild(s);
+      });
+      el.appendChild(wrap);
     });
   </script>
 </body>
