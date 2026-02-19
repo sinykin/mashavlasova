@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masha Vlasova — Projects + Writing</title>
+  <meta name="description" content="Curatorial projects and writing by Masha Vlasova.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #fafaf8; --text: #1a1a1a; --text-dim: #888; --hover: #e63946; --border: rgba(0,0,0,0.06); }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
+
+    .back { position: fixed; top: 2rem; left: 2rem; z-index: 10; }
+    .back a { color: var(--text-dim); text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; }
+    .back a:hover { color: var(--hover); }
+
+    .container { max-width: 640px; margin: 0 auto; padding: 6rem 2rem 4rem; }
+
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeIn 0.8s ease 0.1s forwards;
+    }
+
+    .section-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--hover);
+      margin-bottom: 1.2rem;
+    }
+
+    .item-list { list-style: none; margin-bottom: 2.5rem; }
+
+    .item {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .item:last-child { border-bottom: none; }
+
+    .item-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .item-title a { color: var(--text); text-decoration: none; transition: color 0.3s; }
+    .item-title a:hover { color: var(--hover); }
+
+    .item-desc {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      margin-top: 0.3rem;
+      font-weight: 300;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    .section-divider {
+      width: 30px;
+      height: 2px;
+      background: var(--hover);
+      margin: 1rem 0 2rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .back { top: 1.2rem; left: 1.2rem; }
+      .container { padding: 5rem 1.5rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="back"><a href="index.html">&larr; back</a></div>
+  <div class="container">
+    <h1 class="page-title">Projects + Writing</h1>
+
+    <div class="section-label">Writing</div>
+    <ul class="item-list" id="writing">
+      <li class="item">
+        <div class="item-title"><a href="https://press.uchicago.edu/ucp/books/book/distributed/C/bo208658629.html" target="_blank" rel="noopener">Psychogeographical Choreography: On Filming Hand-Held</a></div>
+        <div class="item-desc">Constructions of the Real, Intellect Books, 2023</div>
+      </li>
+      <li class="item">
+        <div class="item-title"><a href="https://www.mashavlasova.com/s/Fluid-Objects" target="_blank" rel="noopener">Fluid Objects: On Impermanence of Monuments</a></div>
+        <div class="item-desc">with Moira O'Shea &mdash; ASAP Journal, Johns Hopkins University Press, 2021</div>
+      </li>
+      <li class="item">
+        <div class="item-title"><a href="https://docalogue.com/the-interior/" target="_blank" rel="noopener">The Animal Gaze: watching <em>The Interior</em> with my dog</a></div>
+        <div class="item-desc">Docalogue, December 2020</div>
+      </li>
+      <li class="item">
+        <div class="item-title"><a href="https://www.mashavlasova.com/s/Monuments.pdf" target="_blank" rel="noopener">Monuments and Other Things that Change: Several Attempts at Titling a Photograph</a></div>
+        <div class="item-desc">Monument Culture, AASLH / Rowman &amp; Littlefield, 2019</div>
+      </li>
+      <li class="item">
+        <div class="item-title">Interview with Chelsea A. Flower</div>
+        <div class="item-desc">Friend of the Artist Vol. 9, Summer 2019</div>
+      </li>
+    </ul>
+
+    <div class="section-divider"></div>
+
+    <div class="section-label">Curatorial Projects</div>
+    <ul class="item-list" id="curatorial">
+      <li class="item">
+        <div class="item-title">Social Trouble: a screening of experimental film</div>
+        <div class="item-desc">Good Year Arts, Charlotte NC, 2024</div>
+      </li>
+      <li class="item">
+        <div class="item-title"><a href="https://www.mashavlasova.com/cbb_2021" target="_blank" rel="noopener">Checkerboard Borders: Films of the Global South</a></div>
+        <div class="item-desc">Wofford College, 2021</div>
+      </li>
+      <li class="item">
+        <div class="item-title"><a href="https://locatearts.org/the-focus/2020/selects-curated-by-masha-vlasova" target="_blank" rel="noopener">Beyond Indexicality</a></div>
+        <div class="item-desc">LocateArts, 2020</div>
+      </li>
+      <li class="item">
+        <div class="item-title"><a href="https://www.mashavlasova.com/wfaiovaaag" target="_blank" rel="noopener">Women Filmmakers at the Intersection of Documentary, Video Art, and Avant Garde</a></div>
+        <div class="item-desc">Indiana University Cinema, 2018</div>
+      </li>
+      <li class="item">
+        <div class="item-title"><a href="https://www.mashavlasova.com/videonownownow" target="_blank" rel="noopener">video NOW NOW NOW</a></div>
+        <div class="item-desc">Indiana University Cinema, 2018</div>
+      </li>
+      <li class="item">
+        <div class="item-title"><a href="https://www.mashavlasova.com/shared-space" target="_blank" rel="noopener">Shared Space</a></div>
+        <div class="item-desc">Co-founded with Astri J. Snodgrass, Chattanooga TN, 2016&ndash;2017</div>
+      </li>
+    </ul>
+  </div>
+  <script>
+    document.querySelectorAll('.item').forEach((el, i) => {
+      el.style.animationDelay = (0.3 + i * 0.05) + 's';
+    });
+  </script>
+</body>
+</html>

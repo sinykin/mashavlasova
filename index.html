@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masha Vlasova</title>
+  <meta name="description" content="Masha Vlasova is an award-winning experimental animator and non-fiction filmmaker. Assistant Professor at Oxford College, Emory University.">
+  <link rel="canonical" href="https://sinykin.github.io/mashavlasova/">
+  <meta property="og:title" content="Masha Vlasova">
+  <meta property="og:description" content="Award-winning experimental animator and non-fiction filmmaker.">
+  <meta property="og:url" content="https://sinykin.github.io/mashavlasova/">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #fafaf8;
+      --text: #1a1a1a;
+      --text-dim: #888;
+      --accent: #1a1a1a;
+      --hover: #e63946;
+      --border: rgba(0,0,0,0.08);
+    }
+
+    html, body { height: 100%; overflow: hidden; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      text-align: center;
+      padding: 2rem;
+      max-width: 700px;
+    }
+
+    .name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--text);
+      cursor: default;
+      opacity: 0;
+      animation: fadeIn 1s ease 0.1s forwards;
+    }
+
+    .name span {
+      display: inline-block;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .name:hover span {
+      color: var(--hover);
+      transition-delay: calc(var(--i) * 0.02s);
+    }
+
+    .role {
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeIn 1s ease 0.4s forwards;
+    }
+
+    .divider {
+      width: 30px;
+      height: 2px;
+      background: var(--hover);
+      margin: 2rem auto;
+      opacity: 0;
+      animation: fadeIn 1s ease 0.6s forwards;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeIn 1s ease 0.8s forwards;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      position: relative;
+      padding: 0.3rem 0;
+      transition: color 0.3s ease;
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background: var(--hover);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .nav a:hover { color: var(--hover); }
+    .nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+    .ext-links {
+      margin-top: 0.6rem;
+      opacity: 0;
+      animation: fadeIn 1s ease 1s forwards;
+    }
+
+    .ext-links a {
+      color: var(--text-dim);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+    }
+
+    .ext-links a:hover { color: var(--hover); }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .nav { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="name" id="name"></h1>
+    <p class="role">experimental film &amp; animation</p>
+    <div class="divider"></div>
+    <nav class="nav">
+      <a href="films.html">films</a>
+      <a href="projects.html">projects + writing</a>
+      <a href="about.html">about</a>
+      <a href="cv.html">cv</a>
+    </nav>
+    <nav class="nav ext-links">
+      <a href="https://vimeo.com/user8279457" target="_blank" rel="noopener">vimeo</a>
+      <a href="https://www.instagram.com/m4sh4_v1as0va" target="_blank" rel="noopener">instagram</a>
+      <a href="http://linktr.ee/mashavlasova" target="_blank" rel="noopener">linktree</a>
+    </nav>
+  </div>
+  <script>
+    const el = document.getElementById('name');
+    'Masha Vlasova'.split('').forEach((c, i) => {
+      const s = document.createElement('span');
+      s.style.setProperty('--i', i);
+      s.textContent = c === ' ' ? '\u00A0' : c;
+      el.appendChild(s);
+    });
+  </script>
+</body>
+</html>

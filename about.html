@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masha Vlasova — About</title>
+  <meta name="description" content="Masha Vlasova is an award-winning experimental animator and non-fiction filmmaker based in Atlanta, GA.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #fafaf8; --text: #1a1a1a; --text-dim: #888; --hover: #e63946; }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
+
+    .back { position: fixed; top: 2rem; left: 2rem; z-index: 10; }
+    .back a { color: var(--text-dim); text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; }
+    .back a:hover { color: var(--hover); }
+
+    .container { max-width: 600px; margin: 0 auto; padding: 6rem 2rem 4rem; }
+
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeIn 0.8s ease 0.1s forwards;
+    }
+
+    .bio {
+      opacity: 0;
+      animation: fadeIn 0.8s ease 0.3s forwards;
+    }
+
+    .bio p {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.85;
+      margin-bottom: 1.3rem;
+      color: var(--text);
+    }
+
+    .bio a { color: var(--text); text-decoration: underline; text-decoration-color: var(--hover); text-underline-offset: 3px; transition: color 0.3s; }
+    .bio a:hover { color: var(--hover); }
+
+    .contact-line {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeIn 0.8s ease 0.5s forwards;
+    }
+
+    .contact-line a { color: var(--text-dim); transition: color 0.3s; }
+    .contact-line a:hover { color: var(--hover); }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .back { top: 1.2rem; left: 1.2rem; }
+      .container { padding: 5rem 1.5rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="back"><a href="index.html">&larr; back</a></div>
+  <div class="container">
+    <h1 class="page-title">About</h1>
+    <div class="bio">
+      <p>Masha Vlasova is an award-winning experimental animator and non-fiction filmmaker. Her work has been exhibited at Ann Arbor Film Festival, Chicago Underground Film Festival, Ottawa International Animation Festival, Ji.hlava International Documentary Film Festival, Thomas Edison Film Festival, Smack Mellon, Anthology Archives, Abrons Arts Center, the Border Project Gallery in New York City, Vox Populi in Philadelphia, and Carpenter Center for the Visual Arts at Harvard University.</p>
+
+      <p><em>Un-Tidal</em> won Best Celluloid Film and the Award for Original Concept at the Experimental Film Festival of East Anglia. <em>Midsummer</em> received an Honorable Mention at Thomas Edison Film Festival. <em>Her Type</em> earned the Audience Choice Award at Burnt Video Art and Experimental Film Festival.</p>
+
+      <p>She is a Skowhegan fellow (2024), MacDowell fellow (2024), and Fulbright fellow. She holds an M.F.A. from Yale School of Art and a B.F.A. from Cooper Union.</p>
+
+      <p>She is Assistant Professor of Film and Media Production at Oxford College, Emory University. She lives and works in Atlanta, GA.</p>
+    </div>
+
+    <div class="contact-line">
+      <a href="mailto:mvlasov@emory.edu">mvlasov@emory.edu</a><br>
+      Atlanta, GA
+    </div>
+  </div>
+</body>
+</html>

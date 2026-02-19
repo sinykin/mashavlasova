@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masha Vlasova — CV</title>
+  <meta name="description" content="Curriculum vitae for Masha Vlasova, experimental filmmaker and animator.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #fafaf8; --text: #1a1a1a; --text-dim: #888; --hover: #e63946; --border: rgba(0,0,0,0.06); }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
+
+    .back { position: fixed; top: 2rem; left: 2rem; z-index: 10; }
+    .back a { color: var(--text-dim); text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; }
+    .back a:hover { color: var(--hover); }
+
+    .container { max-width: 680px; margin: 0 auto; padding: 6rem 2rem 4rem; }
+
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeIn 0.8s ease 0.1s forwards;
+    }
+
+    .cv-section { margin-bottom: 2.5rem; }
+
+    .cv-section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--hover);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cv-entry {
+      padding: 0.45rem 0;
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .cv-entry .year {
+      color: var(--text-dim);
+      font-size: 0.8rem;
+    }
+
+    .cv-entry .highlight {
+      font-weight: 400;
+    }
+
+    .cv-entry em { font-style: italic; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .back { top: 1.2rem; left: 1.2rem; }
+      .container { padding: 5rem 1.5rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="back"><a href="index.html">&larr; back</a></div>
+  <div class="container">
+    <h1 class="page-title">Curriculum Vitae</h1>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Education</div>
+      <div class="cv-entry"><span class="highlight">M.F.A.</span>, Yale University School of Art <span class="year">2016</span></div>
+      <div class="cv-entry"><span class="highlight">B.F.A.</span>, Cooper Union for the Advancement of Science and Art <span class="year">2011</span></div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Selected Fellowships &amp; Residencies</div>
+      <div class="cv-entry">Interlude Artist Residency <span class="year">2026</span></div>
+      <div class="cv-entry">Hambidge Art Center <span class="year">2025</span></div>
+      <div class="cv-entry">Skowhegan School of Painting and Drawing <span class="year">2024</span></div>
+      <div class="cv-entry">MacDowell Fellowship <span class="year">2024</span></div>
+      <div class="cv-entry">Stove-Works Artist Residency, Chattanooga TN <span class="year">2021</span></div>
+      <div class="cv-entry">PlySpace Residency Program, Muncie IN <span class="year">2019</span></div>
+      <div class="cv-entry">Beinecke Rare Book &amp; Manuscript Library Research Fellowship, Yale <span class="year">2016</span></div>
+      <div class="cv-entry">JUNCTURE Art and Human Rights Initiative Fellowship, Yale Law School <span class="year">2015</span></div>
+      <div class="cv-entry">Alice Kimball English Traveling Fellowship, Yale School of Art <span class="year">2015</span></div>
+      <div class="cv-entry">Central Asian Studies Institute Research Fellowship <span class="year">2013</span></div>
+      <div class="cv-entry">Fulbright Fellowship in Film-making, Kyrgyz Republic <span class="year">2012</span></div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Film Awards</div>
+      <div class="cv-entry">Honorable Mention, Thomas Edison Film Festival &mdash; <em>Midsummer</em> <span class="year">2024</span></div>
+      <div class="cv-entry">Nomination, Best Experimental/Video Art, We Make Movies &mdash; <em>Solar Storm</em> <span class="year">2024</span></div>
+      <div class="cv-entry">Best Celluloid Film, EFEA &mdash; <em>Un-Tidal</em> <span class="year">2022</span></div>
+      <div class="cv-entry">EFEA Award for Original Concept &mdash; <em>Un-Tidal</em> <span class="year">2022</span></div>
+      <div class="cv-entry">Audience Choice Award, Burnt Video Art Festival &mdash; <em>Her Type</em> <span class="year">2021</span></div>
+      <div class="cv-entry">Robert Breer Film and Video Award, Cooper Union &mdash; <em>The Mothers</em> <span class="year">2012</span></div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Solo &amp; Two-Person Exhibitions</div>
+      <div class="cv-entry">Rehearsals, terminal Gallery, APSU, Clarksville TN <span class="year">2021</span></div>
+      <div class="cv-entry">Casserole Series <span class="year">2021</span></div>
+      <div class="cv-entry">Solo Screening, Death Factory &amp; PlySpace Gallery, Muncie IN <span class="year">2020</span></div>
+      <div class="cv-entry">I Don't Think You Can See the Island, Serial Box Projects, Columbia MO <span class="year">2018</span></div>
+      <div class="cv-entry">Monuments and Other Things that Change, Carpenter Center, Harvard <span class="year">2018</span></div>
+      <div class="cv-entry">Frame Work (with Astri Snodgrass), The Fuller Projects, Bloomington IN <span class="year">2017</span></div>
+      <div class="cv-entry">Three Songs About, Greene Gallery, Yale <span class="year">2016</span></div>
+      <div class="cv-entry">Untitled. Woman, 3/4 View, Hadas Gallery, Brooklyn NY <span class="year">2014</span></div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Selected Group Exhibitions &amp; Festivals</div>
+      <div class="cv-entry">Gravitational Lensing, Shapeshifters Cinema, Oakland CA <span class="year">forthcoming</span></div>
+      <div class="cv-entry">Ji.hlava International Documentary Film Festival, Czech Republic <span class="year">2025</span></div>
+      <div class="cv-entry">Edmonton Underground Film Festival <span class="year">2025</span></div>
+      <div class="cv-entry">Enguage Experimental Film Festival, Seattle WA <span class="year">2025</span></div>
+      <div class="cv-entry">Defy Film Festival, Nashville TN <span class="year">2025</span></div>
+      <div class="cv-entry">Iowa City International Film Festival <span class="year">2025</span></div>
+      <div class="cv-entry">Wide Open Experimental Film Festival, Oklahoma City <span class="year">2025</span></div>
+      <div class="cv-entry">63rd Ann Arbor Film Festival <span class="year">2025</span></div>
+      <div class="cv-entry">Oxford Film Festival <span class="year">2025</span></div>
+      <div class="cv-entry">Thomas Edison Film Festival (touring) <span class="year">2024</span></div>
+      <div class="cv-entry">Rare Effect, Lisbon, Portugal <span class="year">2024</span></div>
+      <div class="cv-entry">We Make Movies International Film Festival, LA <span class="year">2024</span></div>
+      <div class="cv-entry">Light Matter Festival, Alfred NY <span class="year">2024</span></div>
+      <div class="cv-entry">Off the Wall, Atlanta &mdash; curated by Gregory Zinman <span class="year">2024</span></div>
+      <div class="cv-entry">Social Objects, Good Year Arts, Charlotte NC <span class="year">2024</span></div>
+      <div class="cv-entry">aCinema, Woodland Pattern, Milwaukee WI <span class="year">2024</span></div>
+      <div class="cv-entry">Wide Open Experimental Film Festival, Oklahoma City <span class="year">2024</span></div>
+      <div class="cv-entry">Mientras tanto CINE, Uruguay <span class="year">2024</span></div>
+      <div class="cv-entry">Cosmic Rays Film Festival, Chapel Hill NC <span class="year">2024</span></div>
+      <div class="cv-entry">ASAP 14, Seattle WA <span class="year">2023</span></div>
+      <div class="cv-entry">Ottawa International Animation Festival <span class="year">2023</span></div>
+      <div class="cv-entry">Chicago Underground Film Festival <span class="year">2023</span></div>
+      <div class="cv-entry">Wrong Biennale <span class="year">2023</span></div>
+      <div class="cv-entry">Fisura Film Festival, Mexico City <span class="year">2023</span></div>
+      <div class="cv-entry">61st Ann Arbor Film Festival <span class="year">2023</span></div>
+      <div class="cv-entry">16MM Film Festival, Mumbai <span class="year">2022</span></div>
+      <div class="cv-entry">Light Matter Film Festival, Alfred NY <span class="year">2022</span></div>
+      <div class="cv-entry">Vector, Heaven Gallery, Chicago <span class="year">2022</span></div>
+      <div class="cv-entry">Defy Film Festival, Nashville TN <span class="year">2022</span></div>
+      <div class="cv-entry">EFEA, Norwich, UK <span class="year">2022</span></div>
+      <div class="cv-entry">Currents Festival, Santa Fe NM <span class="year">2022</span></div>
+      <div class="cv-entry">Frame &amp; Frequency VIII, VisArts, Rockville MD <span class="year">2022</span></div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Writing</div>
+      <div class="cv-entry">"Psychogeographical Choreography," <em>Constructions of the Real</em>, Intellect Books <span class="year">2023</span></div>
+      <div class="cv-entry">"Fluid Objects" (with Moira O'Shea), <em>ASAP Journal</em>, JHU Press <span class="year">2021</span></div>
+      <div class="cv-entry">"The Animal Gaze," <em>Docalogue</em> <span class="year">2020</span></div>
+      <div class="cv-entry">"Monuments and Other Things that Change," <em>Monument Culture</em>, Rowman &amp; Littlefield <span class="year">2019</span></div>
+      <div class="cv-entry">"Interview with Chelsea A. Flower," <em>Friend of the Artist Vol. 9</em> <span class="year">2019</span></div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Teaching</div>
+      <div class="cv-entry"><span class="highlight">Assistant Professor</span>, Film and Media Production, Oxford College at Emory University <span class="year">2022&ndash;present</span></div>
+      <div class="cv-entry">Assistant Professor, Studio Art, Wofford College <span class="year">2019&ndash;2022</span></div>
+      <div class="cv-entry">Lecturer and Lead Faculty, University of North Texas at Denton <span class="year">2018&ndash;2019</span></div>
+      <div class="cv-entry">Visiting Assistant Professor, Digital Art, Indiana University Bloomington <span class="year">2017&ndash;2018</span></div>
+      <div class="cv-entry">Lecturer, University of Tennessee at Chattanooga <span class="year">2016&ndash;2017</span></div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Selected Bibliography</div>
+      <div class="cv-entry">Michael Sicinski, <em>In Review Online</em> <span class="year">2025</span></div>
+      <div class="cv-entry">Alla Gadassik, OIAF programme essay <span class="year">2023</span></div>
+      <div class="cv-entry">Anna Mikaela Ekstrand, <em>Art Spiel</em> <span class="year">2023</span></div>
+      <div class="cv-entry">Xuezhu Jenny Wang, <em>Cutbytes</em> <span class="year">2023</span></div>
+      <div class="cv-entry">Chantal Partamian, <em>Burnt Film Festival</em> <span class="year">2021</span></div>
+      <div class="cv-entry">Alison Atkinson-Phillips, <em>The Public Historian</em> <span class="year">2021</span></div>
+      <div class="cv-entry"><em>The New Media Current</em> interview <span class="year">2020</span></div>
+      <div class="cv-entry">Debora Faccion, <em>Media-N</em>, New Media Caucus <span class="year">2019</span></div>
+      <div class="cv-entry"><em>Fembot</em> exhibition catalog, The Hand Gallery <span class="year">2018</span></div>
+      <div class="cv-entry">Brian Jobe, <em>The Focus</em>, Locate Arts <span class="year">2016</span></div>
+    </div>
+  </div>
+</body>
+</html>
