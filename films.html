@@ -348,41 +348,71 @@
   </div>
 
   <script>
-    /* ── Staggered fade-in ── */
-    document.querySelectorAll('.card, .section-label').forEach((el, i) => {
-      el.style.animationDelay = (0.3 + i * 0.06) + 's';
-    });
-
-    /* ── Category filtering ── */
+    const grid = document.querySelector('.grid');
     const buttons = document.querySelectorAll('.sidebar button');
-    const cards = document.querySelectorAll('.card');
     const labels = document.querySelectorAll('.section-label');
 
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function applyFilter(filter) {
+      /* Hide all labels for "all", show matching label otherwise */
+      labels.forEach(l => {
+        l.classList.toggle('hidden', filter === 'all' || l.dataset.section !== filter);
+      });
+
+      /* Collect visible cards, shuffle, re-append */
+      const allCards = [...grid.querySelectorAll('.card')];
+      allCards.forEach(c => c.remove());
+
+      const visible = [];
+      const hidden = [];
+      allCards.forEach(c => {
+        if (filter === 'all' || c.dataset.cat === filter) {
+          c.classList.remove('hidden');
+          visible.push(c);
+        } else {
+          c.classList.add('hidden');
+          hidden.push(c);
+        }
+      });
+
+      shuffle(visible);
+
+      /* Re-insert: if filtering by category, put label first then shuffled cards */
+      if (filter !== 'all') {
+        const label = [...labels].find(l => l.dataset.section === filter);
+        if (label) grid.appendChild(label);
+      }
+      visible.forEach((c, i) => {
+        c.style.animationDelay = (0.1 + i * 0.04) + 's';
+        c.style.animation = 'none';
+        c.offsetHeight; /* trigger reflow */
+        c.style.animation = '';
+        grid.appendChild(c);
+      });
+
+      /* Append hidden cards and remaining labels at end (keeps DOM intact) */
+      hidden.forEach(c => grid.appendChild(c));
+      labels.forEach(l => { if (l.classList.contains('hidden')) grid.appendChild(l); });
+    }
+
+    /* Button clicks */
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
         buttons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const filter = btn.dataset.filter;
-
-        cards.forEach(card => {
-          if (filter === 'all' || card.dataset.cat === filter) {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
-        });
-
-        labels.forEach(label => {
-          if (filter === 'all') {
-            label.classList.add('hidden');
-          } else if (label.dataset.section === filter) {
-            label.classList.remove('hidden');
-          } else {
-            label.classList.add('hidden');
-          }
-        });
+        applyFilter(btn.dataset.filter);
       });
     });
+
+    /* Shuffle on initial load */
+    applyFilter('all');
   </script>
 </body>
 </html>
